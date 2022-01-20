@@ -24,12 +24,12 @@ Para ello, se limitan los puntos de interés a los templos religiosos tanto cat�
 ## Librerías
 
 Para poder crear el código se han utilizado las siguientes librerías:
-**Pandas**: Para poder trabajar en dataframes
-**Requests**: Para conectarse a la api del ayuntamiento y obtener los puntos de interés
-**os**: Para poder acceder a carpetas del ordenador
-**geopandas**: Para trabajar con coordenadas y transformarlos en puntos concretos y así medir las distancias
-**shapely.geometry**: Para medir distancias entre puntos
-**argparse**: Para conectar el pipeline creado con la terminal
+1) **Pandas**: Para poder trabajar en dataframes
+2) **Requests**: Para conectarse a la api del ayuntamiento y obtener los puntos de interés
+3) **os**: Para poder acceder a carpetas del ordenador
+4) **geopandas**: Para trabajar con coordenadas y transformarlos en puntos concretos y así medir las distancias
+5) **shapely.geometry**: Para medir distancias entre puntos
+6) **argparse**: Para conectar el pipeline creado con la terminal
     
 ## Metodología seguida ETC
 
