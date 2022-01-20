@@ -1,4 +1,4 @@
-<p align="left"><img src="https://cdn-images-1.medium.com/max/184/1*2GDcaeYIx_bQAZLxWM4PsQ@2x.png"></p>
+<p align="left"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.emesa-m30.es%2Festaciones-bicimad-dentro-m-30%2F&psig=AOvVaw178f3yQFMxsyb_zVcSsjCB&ust=1642794937369000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNCZqpeOwfUCFQAAAAAdAAAAABAD"></p>
 
 #  Proyecto Santi Oriol -- Estación más cercana
 
@@ -24,14 +24,14 @@ Para ello, se limitan los puntos de interés a los templos religiosos tanto cat�
 ## Librerías
 
 Para poder crear el código se han utilizado las siguientes librerías:
-    **Pandas**: Para poder trabajar en dataframes
-    **Requests**: Para conectarse a la api del ayuntamiento y obtener los puntos de interés
-    **os**: Para poder acceder a carpetas del ordenador
-    **geopandas**: Para trabajar con coordenadas y transformarlos en puntos concretos y así medir las distancias
-    **shapely.geometry**: Para medir distancias entre puntos
-    **argparse**: Para conectar el pipeline creado con la terminal
+**Pandas**: Para poder trabajar en dataframes
+**Requests**: Para conectarse a la api del ayuntamiento y obtener los puntos de interés
+**os**: Para poder acceder a carpetas del ordenador
+**geopandas**: Para trabajar con coordenadas y transformarlos en puntos concretos y así medir las distancias
+**shapely.geometry**: Para medir distancias entre puntos
+**argparse**: Para conectar el pipeline creado con la terminal
     
-## Metodología seguida ETL###
+## Metodología seguida ETC
 
 ### Extracción ###
 
@@ -41,21 +41,21 @@ Para poder crear el código se han utilizado las siguientes librerías:
 ### Transformación ###
 **Jupyter**
 La transformación de los datos se ha realizado con el siguiente orden:
-    1) Se han convertido los datos en dataframes
-    2) Se han limpiado y renombrado 
-    3) Se han unido todos los datos en una sola tabla
-    4) Sobre esa tabla se ha aplicado la función *Distance* para calcular la distancia entre el punto de interés y la estación de bicimad
-    5) A continuación se han creado dos funciones para caluclar la estación de bicis más cercana *bicimad_mas_cercana* y todas las                  estaciones ordenadas en función de la distancia *Tabla_bicimad_cercana*
+1) Se han convertido los datos en dataframes
+2) Se han limpiado y renombrado 
+3) Se han unido todos los datos en una sola tabla
+4) Sobre esa tabla se ha aplicado la función *Distance* para calcular la distancia entre el punto de interés y la estación de bicimad
+5) A continuación se han creado dos funciones para caluclar la estación de bicis más cercana *bicimad_mas_cercana* y todas las               estaciones ordenadas en función de la distancia *Tabla_bicimad_cercana*
 
 **Visual studio code**
-    1) Se ha creado un archivo .py
-    2) Se ha realizado un pipeline con argparse para conectar con la terminal.
-    3) Se ha introducido el código de jupyter
-    4) Se ha añadido una función if que recibe los imputs del argparse y del usuario para correr las funciones deseadas en función del tipo        de ejecución que haya seleccionado el usuario
+1) Se ha creado un archivo .py
+2) Se ha realizado un pipeline con argparse para conectar con la terminal.
+3) Se ha introducido el código de jupyter
+4) Se ha añadido una función if que recibe los imputs del argparse y del usuario para correr las funciones deseadas en función del tipode ejecución que haya seleccionado el usuario
     
-### Load ###
+### Carga ###
 **Visual studio code**
-    1) En el if mencionado en el paso 4 del apartado anterior, se ordena que se cree un archivo csv local en función del tipo de ejecución          que seleccione el usuario
+1) En el if mencionado en el paso 4 del apartado anterior, se ordena que se cree un archivo csv local en función del tipo de ejecución          que seleccione el usuario
 
 
 
