@@ -1,91 +1,61 @@
 <p align="left"><img src="https://cdn-images-1.medium.com/max/184/1*2GDcaeYIx_bQAZLxWM4PsQ@2x.png"></p>
 
-# __ih_datamadpt1121_project_m1__
+#  Proyecto Santi Oriol -- Estación más cercana
 
 Ironhack Madrid - Data Analytics Part Time - November 2021 - Project Module 1
 
-## **Data:**
+## Explicación del proyecto
 
-There are 2 main datasources:
-
-- **Azure SQL Database.** The database contains information from the BiciMAD stations including their location (i.e.: latitude / longitude). In order to access the database you may need the following credentials:
-```
-Server name:   sqlironhack
-Database:      BiciMAD
-```
-> __IMPORTANT =>__ Username and password will be provided in class.
-
-
-- **API REST.** We will use the API REST from the [Portal de datos abiertos del Ayuntamiento de Madrid](https://datos.madrid.es/nuevoMadrid/swagger-ui-master-2.2.10/dist/index.html?url=/egobfiles/api.datos.madrid.es.json#/), where you can find the __Catálogo de datos__ with more than 70 datasets.
-
-> __IMPORTANT =>__ Specific datasets will be assigned to each student in order to perform the challenges.
-
+El proyecto consiste en crear una aplicación para obtener la estación de bicis más cercana (BiciMAD) desde el punto de interés que el usuario quiera.
+Para ello, se limitan los puntos de interés a los templos religiosos tanto católicos como no católicos.
 
 ---
 
-## **Main Challenge:**
+## Instrucciones de uso
 
-You must create a Python App (**Data Pipeline**) that allow their potential users to find the nearest BiciMAD station to a set of places of interest. The output table should look similar to:
+1) Abrir la terminal "Power Shell" en el caso de windows
+2) Meterse en el entorno "Proyect1_bueno" con el comando conda activate
+3) Acceder a la carpeta donde se encuentra el código de la aplicación. Este archivo "main.py". Para ello se debe ejecutar el comando "cd" y añadir la siguiente ruta: \Desktop\Ironhack\ih_datamadpt1121_project_m1\notebooks>
+4) Para ejecutar la aplicación se debe introducir el comando python main.py --ejecuion
+5) Se puede obtener la estación más cercana añadiendo al paso 4 MasCercana o si se quieren obtener todas las estaciones de bicimad en relación al punto de interés se deberá añadir al punto 4 TodasEstaciones
+6) La aplicación le dirá que introduzca el punto de interés OJO, debe ser literal
+7) La aplicación le creará un fichero csv en la carpeta output
 
-| Place of interest | Type of place (*) | Place address | BiciMAD station | Station location |
-|---------|----------|-------|------------|----------|
-| Auditorio Carmen Laforet (Ciudad Lineal)   | Centros Culturales | Calle Jazmin, 46 | Legazpi | Calle Bolívar, 3 |
-| Centro Comunitario Casino de la Reina | Centros municipales de enseñanzas artísticas | Calle Casino, 3 | Chamartin | Calle Rodríguez Jaén, 40 |
-| ...     | ...            | ...        | ...      | ...        |
-> __(*)__ There is a list of datasets each one with different places. A specific dataset will be assigned to each student. 
+## Librerías
 
+Para poder crear el código se han utilizado las siguientes librerías:
+    **Pandas**: Para poder trabajar en dataframes
+    **Requests**: Para conectarse a la api del ayuntamiento y obtener los puntos de interés
+    **os**: Para poder acceder a carpetas del ordenador
+    **geopandas**: Para trabajar con coordenadas y transformarlos en puntos concretos y así medir las distancias
+    **shapely.geometry**: Para medir distancias entre puntos
+    **argparse**: Para conectar el pipeline creado con la terminal
+    
+## Metodología seguida ETL###
 
-**Your project must meet the following requirements:**
+### Extracción ###
 
-- It must be contained in a GitHub repository which includes a README file that explains the aim and content of your code. You may follow the structure suggested [here](https://github.com/potacho/data-project-template).
+**Bicimad**: Se han obtenido los datos de Bicimad a través de azure data studio, guaradando el archivo en local
+**Templos**: Por medio de la [API](https://datos.madrid.es/nuevoMadrid/swagger-ui-master-2.2.10/dist/index.html?url=/egobfiles/api.datos.madrid.es.json#/) del ayuntamiento de Madrid y con la librería request.
 
-- It must create, at least, a `.csv` file including the requested table (i.e. Main Challenge). Alternatively, you may create an image, pdf, plot or any other output format that you may find convenient. You may also send your output by e-mail, upload it to a cloud repository, etc. 
+### Transformación ###
+**Jupyter**
+La transformación de los datos se ha realizado con el siguiente orden:
+    1) Se han convertido los datos en dataframes
+    2) Se han limpiado y renombrado 
+    3) Se han unido todos los datos en una sola tabla
+    4) Sobre esa tabla se ha aplicado la función *Distance* para calcular la distancia entre el punto de interés y la estación de bicimad
+    5) A continuación se han creado dos funciones para caluclar la estación de bicis más cercana *bicimad_mas_cercana* y todas las                  estaciones ordenadas en función de la distancia *Tabla_bicimad_cercana*
 
-- It must provide, at least, two options for the final user to select when executing using `argparse`: **(1)** To get the table for every 'Place of interest' included in the dataset (or a set of them), **(2)** To get the table for a specific 'Place of interest' imputed by the user.
-
-**Additionally:**
-
-- You must prepare a 4 minutes presentation (ppt, canva, etc.) to explain your project (Instructors will provide further details about the content of the presentation).
-
-- The last slide of your presentation must include your candidate for the **'Ironhack Data Code Beauty Pageant'**. 
-
-
----
-
-### **Bonus 1:**
-
-You may include in your table the availability of bikes in each station.
-
----
-
-### **Bonus 2:**
-
-You may improve the usability of your app by using [FuzzyWuzzy](https://pypi.org/project/fuzzywuzzy/).
-
----
-
-### **Bonus 3:**
-
-Feel free to enrich your output data with any data you may find relevant (e.g.: wiki info for every place of interest).
-
---- 
-
-## **Project Main Stack**
-
-- [Azure SQL Database](https://portal.azure.com/)
-
-- [SQL Alchemy](https://docs.sqlalchemy.org/en/13/intro.html) (alternatively you can use _Azure Data Studio_)
-
-- [Requests](https://requests.readthedocs.io/)
-
-- [Pandas](https://pandas.pydata.org/pandas-docs/stable/reference/index.html)
-
-- Module `geo_calculations.py`
-
-- [Argparse](https://docs.python.org/3.7/library/argparse.html)
-
-
-
+**Visual studio code**
+    1) Se ha creado un archivo .py
+    2) Se ha realizado un pipeline con argparse para conectar con la terminal.
+    3) Se ha introducido el código de jupyter
+    4) Se ha añadido una función if que recibe los imputs del argparse y del usuario para correr las funciones deseadas en función del tipo        de ejecución que haya seleccionado el usuario
+    
+### Load ###
+**Visual studio code**
+    1) En el if mencionado en el paso 4 del apartado anterior, se ordena que se cree un archivo csv local en función del tipo de ejecución          que seleccione el usuario
 
 
 
